@@ -17,7 +17,7 @@ const ProductPage = () => {
         <div className="row">
           {
             product.map((item) => (
-              <div key={item} className="col-12 col-sm-6 col-md-4">
+              <div key={item.product_id} className="col-12 col-sm-6 col-md-4">
                 <ProductItem key={item.product_id} item={item}/>
               </div>
             ))

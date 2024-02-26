@@ -10,14 +10,11 @@ const FriendSerch = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    console.log('Searching for:', email);
     setShowEmail(await friendsMembers(email, user.user_id));
-    return;
   };
 
   const friendsMembers = async (email, user_id) => {
     try {
-
       const response = await axios.get(`http://10.50.240.199:3000/search_friend?email=${email}&&curr_user_id=${user_id}`);
       if (response.data.status === 400) {
         return [];
@@ -30,8 +27,15 @@ const FriendSerch = () => {
   }
 
   const addFriend = async (user_id, frd_user_id) => {
-    const response = await axios.get(`http://10.50.240.199:3000/add_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=pending`);
-    console.log("I came here")
+    await axios.get(`http://10.50.240.199:3000/add_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=pending`);
+    let users = showEmail;
+    users = users.reduce((accumulator, item) => {
+      if (item.frd_user_id !== frd_user_id) {
+        accumulator.push(item);
+      }
+      return accumulator;
+    }, []);
+    setShowEmail(users);
   }
 
   return (
@@ -39,7 +43,7 @@ const FriendSerch = () => {
       <h4 className='mb-3 pt-3'>Friend Search</h4>
       <form className='d-flex input-group w-auto mb-3 pt-3' onSubmit={async (e) => (await handleSearch(e))}>
         <input type='email' className='form-control border-focus-color' placeholder="Friend Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label='Search' />
-        <MDBBtn type='submit' color='primary' >Search</MDBBtn>
+        <MDBBtn style={{  backgroundColor: "#771a7e" }} color='primary' >Search</MDBBtn>
       </form>
       <MDBListGroup style={{ minWidth: '22rem' }} dark>
         {
@@ -48,7 +52,7 @@ const FriendSerch = () => {
               <MDBListGroupItem tag='button' key={item.user_id} action aria-current='true' type='button' className='px-3 d-flex justify-content-between'>
                 <div>{item.email}</div>
                 <div> <MDBBtnGroup shadow='0'>
-                  <MDBBtn color='dark' onClick={() => addFriend(user.user_id, item.user_id)} disabled={(item.status === "" ? false : true)}> {(item.status === "") ? "Add Friend" : item.status}
+                  <MDBBtn style={{ widows: "100%", backgroundColor: "#771a7e" }} onClick={() => addFriend(user.user_id, item.user_id)} disabled={(item.status === "" ? false : true)}> {(item.status === "") ? "Add Friend" : item.status}
                   </MDBBtn>
                 </MDBBtnGroup> </div>
               </MDBListGroupItem>

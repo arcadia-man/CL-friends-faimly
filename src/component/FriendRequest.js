@@ -19,12 +19,27 @@ const FriendRequest = () => {
   }
 
   const acceptFriend = async (user_id, frd_user_id) => {
-    const response = await axios.get(`http://10.50.240.199:3000/accept_request?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=accepted`);
-    console.log(response.data)
+    await axios.get(`http://10.50.240.199:3000/accept_request?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=accepted`);
+    let users = showEmail;
+    users = users.reduce((accumulator, item) => {
+      if (item.frd_user_id !== frd_user_id) {
+        accumulator.push(item);
+      }
+      return accumulator;
+    }, []);
+    setShowEmail(users);
   }
 
   const removeFriend = async (user_id, frd_user_id) => {
-    const response = await axios.get(`http://10.50.240.199:3000/remove_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}`);
+    await axios.get(`http://10.50.240.199:3000/remove_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}`);
+    let users = showEmail;
+    users = users.reduce((accumulator, item) => {
+      if (item.frd_user_id !== frd_user_id) {
+        accumulator.push(item);
+      }
+      return accumulator;
+    }, []);
+    setShowEmail(users);
   }
 
   return (
@@ -37,8 +52,8 @@ const FriendRequest = () => {
               <MDBListGroupItem tag='button' key={item.frd_user_id} action aria-current='true' type='button' className='px-3 d-flex justify-content-between'>
                 <div>{item.frd_email}</div>
                 <div>  <MDBBtnGroup shadow='0'>
-                  <MDBBtn color='primary' onClick={() => { acceptFriend(user.user_id, item.frd_user_id) }}> Confirm  </MDBBtn>
-                  <MDBBtn color='warning' onClick={() => { removeFriend(user.user_id, item.frd_user_id) }}> Delete  </MDBBtn>
+                  <MDBBtn style={{ widows: "100%", backgroundColor: "#771a7e" }} onClick={() => { acceptFriend(user.user_id, item.frd_user_id) }}> Confirm  </MDBBtn>
+                  <MDBBtn style={{ widows: "100%", backgroundColor: "#771a7e" }} onClick={() => { removeFriend(user.user_id, item.frd_user_id) }}> Delete  </MDBBtn>
                 </MDBBtnGroup>
                 </div>
               </MDBListGroupItem>

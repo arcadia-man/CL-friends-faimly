@@ -31,6 +31,7 @@ const ProductItem = (props) => {
       if (user && user.status) {
         if (item.is_wishlist === 1) {
           await removeWishlist(user.user_id, item.product_id)
+          
         } else {
           await addWishlist(user.user_id, item.product_id)
         }
@@ -44,7 +45,8 @@ const ProductItem = (props) => {
   }
 
   useEffect(() => {
-  }, [wish])
+    setwish(!wish)
+  }, [item.is_wishlist])
   
 
   return (

@@ -47,7 +47,6 @@ export const UserProvider = (props) => {
     try {
       const response = await axios.get(`http://10.50.240.199:3000/list_product?user_id=${user_id}&&is_wishlist_call=${is_wishlist_call}`);
       setProduct(response.data.result)
-      console.log(response.data.result)
     } catch (error) {
       console.error("Error making API request:", error);
     }
