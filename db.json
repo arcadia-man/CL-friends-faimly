@@ -1,0 +1,82 @@
+{
+  "users": [
+    { 
+      "id": "1",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "password": "hashed_password",
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-01-15",
+      "profilePicture": "https://example.com/john_profile.jpg",
+      "createdAt": "2022-01-01T12:00:00Z",
+      "updatedAt": "2022-02-15T18:30:00Z"
+    },
+    { 
+      "id": "2",
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "password": "hashed_password",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "dateOfBirth": "1985-05-20",
+      "profilePicture": "https://example.com/jane_profile.jpg",
+      "createdAt": "2022-01-05T09:45:00Z",
+      "updatedAt": "2022-03-10T14:20:00Z"
+    },
+    { 
+      "id": "3",
+      "username": "bob_johnson",
+      "email": "bob@example.com",
+      "password": "hashed_password",
+      "firstName": "Bob",
+      "lastName": "Johnson",
+      "dateOfBirth": "1995-08-03",
+      "profilePicture": "https://example.com/bob_profile.jpg",
+      "createdAt": "2022-02-10T16:10:00Z",
+      "updatedAt": "2022-04-25T11:55:00Z"
+    },
+    { 
+      "id": "4",
+      "username": "alice_williams",
+      "email": "alice@example.com",
+      "password": "hashed_password",
+      "firstName": "Alice",
+      "lastName": "Williams",
+      "dateOfBirth": "1988-12-12",
+      "profilePicture": "https://example.com/alice_profile.jpg",
+      "createdAt": "2022-03-20T22:30:00Z",
+      "updatedAt": "2022-05-18T08:40:00Z"
+    },
+    { 
+      "id": "5",
+      "username": "charlie_brown",
+      "email": "charlie@example.com",
+      "password": "hashed_password",
+      "firstName": "Charlie",
+      "lastName": "Brown",
+      "dateOfBirth": "1992-06-28",
+      "profilePicture": "https://example.com/charlie_profile.jpg",
+      "createdAt": "2022-04-15T14:50:00Z",
+      "updatedAt": "2022-06-05T19:15:00Z"
+    }
+  ],
+  "friendships": [
+    { "id": "1", "userId1": "1", "userId2": "2", "status": "accepted", "createdAt": "2022-02-01T08:00:00Z" },
+    { "id": "2", "userId1": "1", "userId2": "3", "status": "pending", "createdAt": "2022-02-05T10:30:00Z" },
+    { "id": "3", "userId1": "2", "userId2": "4", "status": "accepted", "createdAt": "2022-03-12T15:20:00Z" },
+    { "id": "4", "userId1": "3", "userId2": "5", "status": "pending", "createdAt": "2022-04-18T19:45:00Z" },
+    { "id": "5", "userId1": "4", "userId2": "5", "status": "accepted", "createdAt": "2022-05-25T22:10:00Z" }
+  ],
+  "result":[
+    {"product_name":"Sapphire Floret Hoop Earrings","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/E/JE04743-RGP9SS_11_listfront.jpg","product_cost":32336,"product_id":1,"product_description":"Set in 18 KT Rose Gold(2.850 g) with diamonds (0.170 ct ,IJ-SI)","is_wishlist":1},
+    {"product_name":"Sapphire Floret Hoop Earrings","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/E/JE04743-RGP9SS_11_listfront.jpg","product_cost":32336,"product_id":2,"product_description":"Set in 18 KT Rose Gold(2.850 g) with diamonds (0.170 ct ,IJ-SI)","is_wishlist":1},
+    {"product_name":"Floret Miracle Plate Stud Earrings","product_img_url":"data-src=\"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/E/JE04425-RGP900_11_listfront.jpg","product_cost":20563,"product_id":3,"product_description":"Set in 18 KT Rose Gold(1.630 g) with diamonds (0.120 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Helix Diamond Bracelet","product_img_url":"src=\"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/T/JT00625-YGP900_11_listfront.jpg","product_cost":61678,"product_id":4,"product_description":"Set in 18 KT Yellow Gold(7.980 g) with diamonds (0.156 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Akira Mangalsutra Bracelet","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/T/JT00581-RGP900_11_listfront.jpg","product_cost":19394,"product_id":5,"product_description":"Set in 18 KT Rose Gold(2.060 g) with diamonds (0.081 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Soaring Blue Delicate Butterfly Bracelet","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/T/JT00492-YGP9EB_11_listfront.jpg","product_cost":33623,"product_id":6,"product_description":"Set in 18 KT Yellow Gold(3.420 g) with diamonds (0.090 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Two Tone Drop Bracelet","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/J/T/JT00611-WRP900_11_listfront.jpg","product_cost":89416,"product_id":7,"product_description":"Set in 18 KT White \u0026 Rose Gold(11.260 g) with diamonds (0.250 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Cleva Vivid Solitaire Ring","product_img_url":"src=\"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/S/R/SR02122-YGP900_11_listfront.jpg","product_cost":93782,"product_id":8,"product_description":"Set in 18 KT Yellow Gold(2.210 g) with diamonds (0.500 ct ,IJ-SI)","is_wishlist":0},
+    {"product_name":"Yue Gold Pear Solitaire Ring","product_img_url":"https://cdnstage.caratlane.com/media/catalog/product/cache/6/image/480x480/9df78eab33525d08d6e5fb8d27136e95/S/R/SR02095-YGP900_11_listfront.jpg","product_cost":45817,"product_id":9,"product_description":"Set in 18 KT Yellow Gold(2.250 g) with diamonds (0.320 ct ,IJ-SI)","is_wishlist":0}
+  ]
+}
