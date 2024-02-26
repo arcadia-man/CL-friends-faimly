@@ -19,35 +19,43 @@ import { useUserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
 const ProductItem = (props) => {
-  const { item } = props;
+  const { item, event_type, event_from } = props;
   const [centredModal, setcentredModal] = useState(false);
   const toggleOpen = () => setcentredModal(!centredModal);
   const [wish, setwish] = useState(false);
-  const { user, addWishlist ,removeWishlist } = useUserContext();
-  const navigate = useNavigate()
+  const { user } = useUserContext();
+  const navigate = useNavigate();
 
   const changeWish = async () => {
-    try {
-      if (user && user.status) {
-        if (item.is_wishlist === 1) {
-          await removeWishlist(user.user_id, item.product_id)
-          
-        } else {
-          await addWishlist(user.user_id, item.product_id)
-        }
-        setwish(!wish)
-      } else {
-        navigate("/login");
+    if (user && user.status) {
+      if (event_from === 'wishlist') {
+        await event_type(user.user_id, item.product_id)
+      } else if (event_from === 'pd_page') {
+        await event_type(user.user_id, item.product_id, item.is_wishlist)
       }
-    } catch (error) {
-      console.log(error)
+    }else{
+      navigate("/login");
     }
+    // try {
+    //   if (user && user.status) {
+    //     if (item.is_wishlist === 1) {
+    //       await removeWishlist(user.user_id, item.product_id)         
+    //     } else {
+    //       await addWishlist(user.user_id, item.product_id)
+    //     }
+    //     setwish(!wish)
+    //   } else {
+    //     navigate("/login");
+    //   }
+    // } catch (error) {
+    //   console.log(error)
+    // }
   }
 
   useEffect(() => {
     setwish(!wish)
   }, [item.is_wishlist])
-  
+
 
   return (
     <div className="mt-3">

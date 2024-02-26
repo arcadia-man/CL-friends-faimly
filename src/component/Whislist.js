@@ -16,6 +16,24 @@ const Whislist = () => {
     }
   };
 
+  const setWishlist = async (user_id, product_id) => {
+    try {
+      const response = await axios.get(`http://10.50.240.199:3000/remove_wishlist?user_id=${user_id}&&product_id=${product_id}`);
+      if(response.data.status){
+        let items = product;
+        items = items.reduce((accumulator, item) => {
+          if (item.product_id !== product_id) {
+            accumulator.push(item);
+          }
+          return accumulator;
+        }, []);
+        setProduct(items);
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     getProduct(user.user_id, true);
   }, []);
@@ -27,7 +45,7 @@ const Whislist = () => {
           {
             product.map((item) => (
               <div key={item.product_id} className="col-12 col-sm-6 col-md-4">
-                <ProductItem key={item.product_id} item={item} />
+                <ProductItem key={item.product_id} item={item}  event_type={setWishlist} event_from="wishlist"/>
               </div>
             ))
           }

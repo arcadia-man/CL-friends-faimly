@@ -15,7 +15,6 @@ function App() {
 
   async function checkUserInLoca(){
     await checkUserInLocal();
-    // await getProduct((user && user.status) ? user.user_id : 0, false);
   }
   useEffect(() => {
     checkUserInLoca();

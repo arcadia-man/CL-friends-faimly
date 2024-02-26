@@ -27,15 +27,22 @@ const FriendSerch = () => {
   }
 
   const addFriend = async (user_id, frd_user_id) => {
-    await axios.get(`http://10.50.240.199:3000/add_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=pending`);
-    let users = showEmail;
-    users = users.reduce((accumulator, item) => {
-      if (item.frd_user_id !== frd_user_id) {
-        accumulator.push(item);
+    try {
+      const response = await axios.get(`http://10.50.240.199:3000/add_friend?curr_user_id=${user_id}&&frd_user_id=${frd_user_id}&&status=pending`);
+      if (response.data.status === 200) {
+        let users = showEmail;
+        users = users.map((item) => {
+          if (item.user_id === frd_user_id) {
+            return { ...item, status: 'Pending' }; 
+          }
+          return item;  
+        });
+        setShowEmail(users);
       }
-      return accumulator;
-    }, []);
-    setShowEmail(users);
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return (
@@ -43,7 +50,7 @@ const FriendSerch = () => {
       <h4 className='mb-3 pt-3'>Friend Search</h4>
       <form className='d-flex input-group w-auto mb-3 pt-3' onSubmit={async (e) => (await handleSearch(e))}>
         <input type='email' className='form-control border-focus-color' placeholder="Friend Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label='Search' />
-        <MDBBtn style={{  backgroundColor: "#771a7e" }} color='primary' >Search</MDBBtn>
+        <MDBBtn style={{ backgroundColor: "#771a7e" }} color='primary' >Search</MDBBtn>
       </form>
       <MDBListGroup style={{ minWidth: '22rem' }} dark>
         {
